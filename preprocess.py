@@ -11,8 +11,8 @@ def sample_func():
 def gen_info(df):
     print(f'Num. of Instances: {df.shape[0]}')
     print(f'Sample Instance: {df.iloc[13]}')
-
-    print(f'There are {len(df['related_lang'].unique())}Languages Inherited From: {df['related_lang'].unique()}')
+    related = df['related_lang'].unique()
+    print(f'There are {len(related)}Languages Inherited From: {related}')
 
 
 def get_related(df):
