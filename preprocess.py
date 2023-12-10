@@ -16,7 +16,7 @@ def gen_info(df):
 
 
 def get_related(df):
-    return df.loc[df['reltype'] == 'inherited_from' & df['parent_position'] == 0.0]
+    return df.loc[df['reltype'] == 'inherited_from' and df['parent_position'] == 0.0]
 
 
 
