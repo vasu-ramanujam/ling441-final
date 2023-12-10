@@ -16,6 +16,7 @@ def preprocess_df(df):
     df = df.loc[df['parent_position'] == 0.0]
     #df = df.loc[df['term'].str[0] != '-']
     #df = df.loc[df['term'].str[-1] != '-']
+    df = df.loc[' ' not in df['term'].str]
     unique_words = df['term'].unique()
     entry_per_word = np.zeros_like(unique_words)
     for i, w in enumerate(unique_words):
