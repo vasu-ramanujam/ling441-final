@@ -11,6 +11,12 @@ def gen_info(df):
     related = df['related_lang'].unique()
     print(f'There are {len(related)} Languages Inherited From: {related}')
 
+def preprocess_df(df):
+    df = df.loc[df['reltype'] == 'inherited_from']
+    df = df.loc[df['parent_position'] == 0.0]
+    df = df.loc[df['term'].str[0] != '-']
+    df = df.loc[df['term'].str[-1] != '-']
+    return df
 
 
 def get_english(filename):
