@@ -16,7 +16,7 @@ def preprocess_df(df):
     #for interest
 
     df = df.loc[df['reltype'] == 'inherited_from']
-    df = df.loc[df['parent_position'] != 0.0]
+    df = df.loc[df['parent_position'] == 0.0]
     #df = df.loc[df['term'].str[0] != '-']
     #df = df.loc[df['term'].str[-1] != '-']
 
