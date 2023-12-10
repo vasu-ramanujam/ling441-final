@@ -3,23 +3,13 @@ import numpy as np
 import time
 import math
 
-def sample_func():
-    print('sample function!')
-
 
 #preprocessing functions:
 def gen_info(df):
     print(f'Num. of Instances: {df.shape[0]}')
     print(f'Sample Instance: {df.iloc[13]}')
     related = df['related_lang'].unique()
-    print(f'There are {len(related)}Languages Inherited From: {related}')
-
-
-def get_related(df):
-    part = df.loc[df['reltype'] == 'inherited_from']
-    return part.loc[part['parent_position'] == 0.0]
-
-
+    print(f'There are {len(related)} Languages Inherited From: {related}')
 
 
 
