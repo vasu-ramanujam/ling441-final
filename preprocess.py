@@ -12,17 +12,20 @@ def gen_info(df):
     print(f'There are {len(related)} Languages Inherited From: {related}')
 
 def preprocess_df(df):
+
+    #for interest
+
     df = df.loc[df['reltype'] == 'inherited_from']
     df = df.loc[df['parent_position'] == 0.0]
     #df = df.loc[df['term'].str[0] != '-']
     #df = df.loc[df['term'].str[-1] != '-']
 
     unique_words = df['term'].unique()
-    entry_per_word = np.zeros_like(unique_words)
-    for i, w in enumerate(unique_words):
-        df_word = df.loc[df['term'] == w]
-        entry_per_word[i] = df_word.shape[0]
-    terms_to_keep = unique_words[entry_per_word == 1]
+    #entry_per_word = np.zeros_like(unique_words)
+    #for i, w in enumerate(unique_words):
+    #    df_word = df.loc[df['term'] == w]
+    #    entry_per_word[i] = df_word.shape[0]
+    #terms_to_keep = unique_words[entry_per_word == 1]
     terms_to_keep = [None if (' ' in term) else term for term in terms_to_keep]
     df = df.loc[df['term'].isin(terms_to_keep)]
     return df
