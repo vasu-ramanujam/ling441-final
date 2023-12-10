@@ -14,8 +14,15 @@ def gen_info(df):
 def preprocess_df(df):
     df = df.loc[df['reltype'] == 'inherited_from']
     df = df.loc[df['parent_position'] == 0.0]
-    df = df.loc[df['term'].str[0] != '-']
-    df = df.loc[df['term'].str[-1] != '-']
+    #df = df.loc[df['term'].str[0] != '-']
+    #df = df.loc[df['term'].str[-1] != '-']
+    unique_words = df['term'].unique()
+    entry_per_word = np.zeros_like(unique_words)
+    for i, w in enumerate(unique_words):
+        df_word = df.loc[df['term'] == w]
+        entry_per_word[i] = df_word.shape[0]
+    terms_to_keep = unique_words[entry_per_word == 1]
+    df = df.loc[df['term'].isin(terms_to_keep)]
     return df
 
 
