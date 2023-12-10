@@ -17,6 +17,7 @@ def preprocess_df(df):
 
     df = df.loc[df['reltype'] == 'inherited_from']
     df = df.loc[df['parent_position'] == 0.0]
+    df['term'] = df['term'].str.lower()
     #df = df.loc[df['term'].str[0] != '-']
     #df = df.loc[df['term'].str[-1] != '-']
 
