@@ -16,7 +16,6 @@ def preprocess_df(df):
     df = df.loc[df['parent_position'] == 0.0]
     #df = df.loc[df['term'].str[0] != '-']
     #df = df.loc[df['term'].str[-1] != '-']
-    df = df.drop(df[df['term'].str.contains(' ', regex=False).index])
 
     unique_words = df['term'].unique()
     entry_per_word = np.zeros_like(unique_words)
@@ -24,6 +23,7 @@ def preprocess_df(df):
         df_word = df.loc[df['term'] == w]
         entry_per_word[i] = df_word.shape[0]
     terms_to_keep = unique_words[entry_per_word == 1]
+    terms_to_keep = [None if term.contains(' ') else term for term in terms_to_keep]
     df = df.loc[df['term'].isin(terms_to_keep)]
     return df
 
