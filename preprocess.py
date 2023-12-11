@@ -15,9 +15,9 @@ def preprocess_df(df):
 
     #for interest
 
-    df1 = df.loc[(df['reltype'] == 'inherited_from') ]
-    df2 = df.loc[(df['reltype'] == 'borrowed_from') ]
-    df = df1.merge(df2)
+    df = df.loc[(df['reltype'] == 'inherited_from') ]
+    #df2 = df.loc[(df['reltype'] == 'borrowed_from') ]
+    #df = df.merge(df2)
 
     #print(df.shape)#debug
     df = df.loc[df['parent_position'] == 0.0]
@@ -27,9 +27,9 @@ def preprocess_df(df):
 
 
     unique_words = np.asarray(df['term'].unique())
-    print(unique_words.dtype)
-    spaced_words = [[i for i in unique_words if ' ' in i]]
-    no_spaced = unique_words - spaced_words
+    #print(unique_words.dtype)
+    #spaced_words = [[i for i in unique_words if ' ' in i]]
+    #no_spaced = unique_words - spaced_words
     #print(unique_words)
     #print(unique_words[0])
     terms_to_keep = [None if (' ' in term) else term for term in unique_words]
