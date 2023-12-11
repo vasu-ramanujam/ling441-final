@@ -15,7 +15,7 @@ def preprocess_df(df):
 
     #for interest
 
-    df = df.loc[(df['reltype'] == 'inherited_from') | (df['reltype'] == 'borrowed_from')]
+    df = df.loc[(df['reltype'] == 'inherited_from')]
     print(df.shape)#debug
     print(df.iloc[0])#debug
     df = df.loc[df['parent_position'] == 0.0]
