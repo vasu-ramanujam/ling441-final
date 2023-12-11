@@ -15,7 +15,7 @@ def preprocess_df(df):
 
     #for interest
 
-    df = df.loc[df['reltype'] == 'inherited_from']
+    df = df.loc[df['reltype'] == 'inherited_from' or df['reltype'] == 'borrowed_from']
     df = df.loc[df['parent_position'] == 0.0]
     df['term'] = df['term'].str.lower()
     #df = df.loc[df['term'].str[0] != '-']
@@ -40,3 +40,4 @@ def get_english(filename):
 
 if __name__ == "__main__":
     get_english('etymology.csv')
+
