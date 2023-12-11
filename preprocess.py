@@ -17,7 +17,7 @@ def preprocess_df(df):
 
     df1 = df.loc[(df['reltype'] == 'inherited_from') ]
     df2 = df.loc[(df['reltype'] == 'borrowed_from') ]
-    df = pd.concat([df1, df2])
+    df = df1.merge(df2)
 
     #print(df.shape)#debug
     df = df.loc[df['parent_position'] == 0.0]
