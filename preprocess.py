@@ -23,6 +23,7 @@ def preprocess_df(df):
     #df = df.loc[df['term'].str[-1] != '-']
 
     unique_words = df['term'].unique()
+    print(unique_words)
     #entry_per_word = np.zeros_like(unique_words)
     #for i, w in enumerate(unique_words):
     #    df_word = df.loc[df['term'] == w]
