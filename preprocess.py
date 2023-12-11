@@ -26,7 +26,9 @@ def preprocess_df(df):
     df['term'] = df['term'].str.lower()
 
 
-    unique_words = df['term'].unique()
+    unique_words = list(df['term'].unique())
+    spaced_words = [[i for i in unique_words if ' ' in i]]
+    no_spaced = unique_words - spaced_words
     #print(unique_words)
     #print(unique_words[0])
     terms_to_keep = [None if (' ' in term) else term for term in unique_words]
