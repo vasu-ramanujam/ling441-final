@@ -17,21 +17,21 @@ def preprocess_df(df):
 
     df1 = df.loc[(df['reltype'] == 'inherited_from') ]
     df2 = df.loc[(df['reltype'] == 'borrowed_from') ]
-    df = pd.concat(df1, df2)
+    df = pd.concat([df1, df2])
 
-    print(df.shape)#debug
+    #print(df.shape)#debug
     df = df.loc[df['parent_position'] == 0.0]
 
-    print(df.shape)
+    #print(df.shape)
     df['term'] = df['term'].str.lower()
 
 
     unique_words = df['term'].unique()
-    print(unique_words)
-    print(unique_words[0])
+    #print(unique_words)
+    #print(unique_words[0])
     terms_to_keep = [None if (' ' in term) else term for term in unique_words]
     df = df.loc[df['term'].isin(terms_to_keep)]
-    print(df.shape)
+    #print(df.shape)
     return df
 
 
