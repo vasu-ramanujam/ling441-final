@@ -16,14 +16,15 @@ def preprocess_df(df):
     #for interest
 
     df = df.loc[(df['reltype'] == 'inherited_from') | (df['reltype'] == 'borrowed_from')]
-    print(df.shape)
+    print(df.shape)#debug
+    print(df.iloc[0])#debug
     df = df.loc[df['parent_position'] == 0.0]
     df['term'] = df['term'].str.lower()
-    #df = df.loc[df['term'].str[0] != '-']
-    #df = df.loc[df['term'].str[-1] != '-']
+
 
     unique_words = df['term'].unique()
     print(unique_words)
+    print(unique_words[0])
     terms_to_keep = [None if (' ' in term) else term for term in unique_words]
     df = df.loc[df['term'].isin(terms_to_keep)]
     return df
