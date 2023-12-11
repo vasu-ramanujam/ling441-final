@@ -24,13 +24,7 @@ def preprocess_df(df):
 
     unique_words = df['term'].unique()
     print(unique_words)
-    #entry_per_word = np.zeros_like(unique_words)
-    #for i, w in enumerate(unique_words):
-    #    df_word = df.loc[df['term'] == w]
-    #    entry_per_word[i] = df_word.shape[0]
-    #terms_to_keep = unique_words[entry_per_word == 1]
-    
-    terms_to_keep = [None if (' ' in term.str) else term for term in unique_words]
+    terms_to_keep = [None if (' ' in term) else term for term in unique_words]
     df = df.loc[df['term'].isin(terms_to_keep)]
     return df
 
